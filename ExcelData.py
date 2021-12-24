@@ -1,4 +1,4 @@
-from openpyxl import workbook, load_workbook
+from openpyxl import load_workbook
 from tkinter import messagebox as msgx
 
 wb = load_workbook('CollegeData.xlsx')
@@ -6,79 +6,71 @@ ws = wb.active
 
 def AddExcel(which, data):
     if which == 'std' :
-        ws = wb["Students"]
+        ws = wb['Students']
     elif which == 'lec' :
-        ws = wb["Lecturers"]
+        ws = wb['Lecturers']
     ws.append(data)
     wb.save('CollegeData.xlsx')
 
-def searchExcel(which, id):
+def SearchExcel(which, id):
     if which == 'std' :
         ws = wb['Students']
     elif which == 'lec' :
         ws = wb['Lecturers']
-
-    for r in range(1,ws.max_row):
-        com_id = ws.cell(row=r, column=3).value
+    for r in range(2,ws.max_row+1):
+        com_id = str(ws.cell(row=r, column=3).value)
         if com_id == id :
             return r
+    return 0
 
-def checkExcel(which, id):
-    r = search(which, id)
-    #msgx.showinfo('Check Manager', f'Person is already Existed')
-    c=1
-    print(f'Name : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'National Id : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'College Id : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'Departement : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'Vaccination State : {ws.cell(row=r, column=c).value}')
-    if which == 'std' :
-        c+=1
-        print(f'Grade : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Graduation Year : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Category : {ws.cell(row=r, column=c).value}')
-
-    elif which == 'lec' :
-        c+=1
-        print(f'Speciality : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Source University : {ws.cell(row=r, column=c).value}')
-    wb.save('CollegeData.xlsx')
+def CheckExcel(which, id):
+    r = SearchExcel(which, id)
+    if r != 0 :
+        msgx.showinfo('Check Manager', 'Person is already Existed')
+    else :
+        msgx.showinfo('Check Manager', 'Person is not Existed')
 
 def DeleteExcel(which, id):
-    r = search(which, id)
-    ws.delete_rows(r)
+    r = SearchExcel(which, id)
+    if r != 0 :
+        if which == 'std' :
+            ws = wb['Students']
+        elif which == 'lec' :
+            ws = wb['Lecturers']
+        ws.delete_rows(r)
+        msgx.showinfo('Delete Manager', 'Person is already Deleted')
+    else:
+        msgx.showinfo('Delete Manager', 'Person is not Existed')
     wb.save('CollegeData.xlsx')
 
 def ShowExcel(which, id):
-    r = search(which, id)
-    c=1
-    print(f'Name : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'National Id : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'College Id : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'Departement : {ws.cell(row=r, column=c).value}')
-    c+=1
-    print(f'Vaccination State : {ws.cell(row=r, column=c).value}')
-    if which == 'std' :
-        c+=1
-        print(f'Grade : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Graduation Year : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Category : {ws.cell(row=r, column=c).value}')
-
-    elif which == 'lec' :
-        c+=1
-        print(f'Speciality : {ws.cell(row=r, column=c).value}')
-        c+=1
-        print(f'Source University : {ws.cell(row=r, column=c).value}')
-    wb.save('CollegeData.xlsx')
+    r = SearchExcel(which, id)
+    if r != 0 :
+        msgx.showinfo('Check Manager', 'Person is already Existed')
+        if which == 'std' :
+            ws = wb['Students']
+            data = {
+                'Name' : ws.cell(row=r, column=1).value ,
+                'National Id' : ws.cell(row=r, column=2).value ,
+                'College Id' : ws.cell(row=r, column=3).value ,
+                'Departement' : ws.cell(row=r, column=4).value ,
+                'Vaccination State' : ws.cell(row=r, column= 5).value ,
+                'Current Year' : ws.cell(row=r, column=6).value ,
+                'Graduation Year' : ws.cell(row=r, column=7).value ,
+                'Category' : ws.cell(row=r, column=8).value
+            }
+        elif which == 'lec' :
+            ws = wb['Lecturers']
+            data = {
+                'Name' : ws.cell(row=r, column=1).value ,
+                'National Id' : ws.cell(row=r, column=2).value ,
+                'College Id' : ws.cell(row=r, column=3).value ,
+                'Departement' : ws.cell(row=r, column=4).value ,
+                'Vaccination State' : ws.cell(row=r, column= 5).value ,
+                'Speciality' : ws.cell(row=r, column=6).value ,
+                'Source University' : ws.cell(row=r, column=7).value
+            }
+        return data
+    else :
+        msgx.showinfo('Check Manager', 'Person is not Existed')
+        return 0

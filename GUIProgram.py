@@ -1,15 +1,24 @@
 from tkinter import *
-from openpyxl import Workbook
 from System import CollegeSystem
+import os
 
 if __name__ == "__main__":
-    wb = Workbook()
-    wb.create_sheet("Students", 0)
-    wb.create_sheet("Lecturers", 1)
-    wb.save('CollegeData.xlsx')
+    if os.path.exists('CollegeData.xlsx') == False :
+        from openpyxl import Workbook
+        wb = Workbook()
+        wb.create_sheet('Students')
+        wb.create_sheet('Lecturers')
+        wb.remove('Sheet')
+        data = ['Name', 'National Id', 'College Id', 'Departement', 'Vaccination State', 'Current Year', 'Graduation Year', 'Category']
+        wb['Students'].append(data)
+        data = ['Name', 'National Id', 'College Id', 'Departement', 'Vaccination State', 'Speciality', 'Source University']
+        wb['Lecturers'].append(data)
+        wb.save('CollegeData.xlsx')
 
     SystemFrame = Tk()
-    SystemFrame.geometry("700x400")
-    SystemFrame.configure(background="light green")
+    SystemFrame.geometry("500x400")
+    SystemFrame.configure(background="teal")
+    SystemFrame.title("College Pass System")
+    SystemFrame.iconbitmap('p3.ico')
     System = CollegeSystem(SystemFrame)
     SystemFrame.mainloop()
