@@ -84,11 +84,11 @@ class CollegeSystem(object):
                     vac = '' ; catg = '' 
                     if isVac.get() == 1 : vac = 'vaccinated'
                     elif isVac.get() == 2 : vac = 'not vaccinated'
-                    if Kind.get() == 1 : catg = 'Main Stream'
-                    elif Kind.get() == 2 : catg = 'Credit'
-                    new_std = Student(nameInput.get(), Nat_IdInput.get(), Cge_IdInput.get(), DepInput.get(), vac, GradeInput.get(), Grade_yearInput.get(), catg)
+                    if Catg.get() == 1 : catg = 'Main Stream'
+                    elif Catg.get() == 2 : catg = 'Credit'
+                    new_std = Student(nameInput.get(), Nat_IdInput.get(), Cge_IdInput.get(), DepInput.get(), vac, Curr_yearInput.get(), Grade_yearInput.get(), catg)
                     self.students.append(new_std)
-                    new_row = [nameInput.get(), Nat_IdInput.get(), Cge_IdInput.get(), DepInput.get(), vac, GradeInput.get(), Grade_yearInput.get(), catg]
+                    new_row = [nameInput.get(), Nat_IdInput.get(), Cge_IdInput.get(), DepInput.get(), vac, Curr_yearInput.get(), Grade_yearInput.get(), catg]
                 elif which == 'lec' :
                     vac = ''
                     if isVac.get() == 1 : vac = 'vaccinated'
