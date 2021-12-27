@@ -30,53 +30,53 @@ class CollegeSystem(object):
         def Add(which):
             QuesFrame.destroy()
             AddFrame = Toplevel()
-            AddFrame.geometry("600x400")
+            AddFrame.geometry("400x400")
             AddFrame.title("Adding Frame Manager")
             AddFrame.configure(background="maroon")
 
-            NameLabel = Label(AddFrame, text="Name : ", fg="maroon", width=20, height=1).place(x=10, y=10)
+            NameLabel = Label(AddFrame, text="Name : ", fg="green", width=20, height=1).place(x=10, y=30)
             nameInput = StringVar()
-            NameEntry = Entry(AddFrame, textvariable=nameInput, fg="blue", width=30).place(x= 200, y=10)
+            NameEntry = Entry(AddFrame, textvariable=nameInput, fg="blue", width=30).place(x= 200, y=30)
 
-            Nat_IdLabel = Label(AddFrame, text="National Id : ", fg="maroon", width=20, height=1).place(x=10, y=50)
+            Nat_IdLabel = Label(AddFrame, text="National Id : ", fg="green", width=20, height=1).place(x=10, y=70)
             Nat_IdInput = StringVar()
-            Nat_IdEntry = Entry(AddFrame, textvariable=Nat_IdInput, fg="blue", width=30).place(x= 200, y=50)
+            Nat_IdEntry = Entry(AddFrame, textvariable=Nat_IdInput, fg="blue", width=30).place(x= 200, y=70)
 
-            Cge_IdLabel = Label(AddFrame, text="College Id : ", fg="maroon", width=20, height=1).place(x=10, y=90)
+            Cge_IdLabel = Label(AddFrame, text="College Id : ", fg="green", width=20, height=1).place(x=10, y=110)
             Cge_IdInput = StringVar()
-            Cge_IdEntry = Entry(AddFrame, textvariable=Cge_IdInput, fg="blue", width=30).place(x= 200, y=90)
+            Cge_IdEntry = Entry(AddFrame, textvariable=Cge_IdInput, fg="blue", width=30).place(x= 200, y=110)
 
-            DepLabel = Label(AddFrame, text="Departement : ", fg="maroon", width=20, height=1).place(x=10, y=130)
+            DepLabel = Label(AddFrame, text="Departement : ", fg="green", width=20, height=1).place(x=10, y=150)
             DepInput = StringVar()
-            DepEntry = Entry(AddFrame, textvariable=DepInput, fg="blue", width=30).place(x= 200, y=130)
+            DepEntry = Entry(AddFrame, textvariable=DepInput, fg="blue", width=30).place(x= 200, y=150)
 
-            IsVacLabel = Label(AddFrame, text="Is Vaccinated : ", fg="maroon", width=20, height=1).place(x=10, y=170)
+            IsVacLabel = Label(AddFrame, text="Is Vaccinated : ", fg="green", width=20, height=1).place(x=10, y=190)
             isVac = IntVar()
-            TrueVac = Radiobutton(AddFrame, text='True', variable=isVac, value=1).place(x=200, y=170)
-            FalseVac = Radiobutton(AddFrame, text='False', variable=isVac, value=2).place(x=300, y=170)
+            TrueVac = Radiobutton(AddFrame, text='True',fg='green', variable=isVac, value=1).place(x=200, y=190)
+            FalseVac = Radiobutton(AddFrame, text='False',fg='green', variable=isVac, value=2).place(x=300, y=190)
 
             if which == 'std' :
-                Curr_yearLabel = Label(AddFrame, text="Current year : ", fg="maroon", width=20, height=1).place(x=10, y=210)
+                Curr_yearLabel = Label(AddFrame, text="Current year : ", fg="green", width=20, height=1).place(x=10, y=230)
                 Curr_yearInput = StringVar()
-                Curr_yearEntry = Entry(AddFrame, textvariable=Curr_year, fg="blue", width=30).place(x= 200, y=210)
+                Curr_yearEntry = Entry(AddFrame, textvariable=Curr_yearInput, fg="blue", width=30).place(x= 200, y=230)
 
-                Grade_yearLabel = Label(AddFrame, text="Grade year : ", fg="maroon", width=20, height=1).place(x=10, y=250)
+                Grade_yearLabel = Label(AddFrame, text="Grade year : ", fg="green", width=20, height=1).place(x=10, y=270)
                 Grade_yearInput = StringVar()
-                Grade_yearEntry = Entry(AddFrame, textvariable=Grade_yearInput, fg="blue", width=30).place(x= 200, y=250)
+                Grade_yearEntry = Entry(AddFrame, textvariable=Grade_yearInput, fg="blue", width=30).place(x= 200, y=270)
 
-                CatgLabel = Label(AddFrame, text="Category : ", fg="maroon", width=20, height=1).place(x=10, y=290)
+                CatgLabel = Label(AddFrame, text="Category : ", fg="green", width=20, height=1).place(x=10, y=310)
                 Catg = IntVar()
-                mainStream = Radiobutton(AddFrame, text='Main Stream', variable=Catg, value=1).place(x=200, y=290)
-                credit = Radiobutton(AddFrame, text='Credit', variable=Catg, value=2).place(x=300, y=290)
+                mainStream = Radiobutton(AddFrame, text='Main Stream', fg='green', variable=Catg, value=1).place(x=200, y=310)
+                credit = Radiobutton(AddFrame, text='Credit', fg='green', variable=Catg, value=2).place(x=320, y=310)
                 
             elif which == 'lec' :
-                SpecLabel = Label(AddFrame, text="Speciality : ", fg="maroon", width=20, height=1).place(x=10, y=210)
+                SpecLabel = Label(AddFrame, text="Speciality : ", fg="green", width=20, height=1).place(x=10, y=230)
                 SpecInput = StringVar()
-                SpecEntry = Entry(AddFrame, textvariable=SpecInput, fg="blue", width=30).place(x= 200, y=210)
+                SpecEntry = Entry(AddFrame, textvariable=SpecInput, fg="blue", width=30).place(x= 200, y=230)
 
-                Src_UnvLabel = Label(AddFrame, text="Source University : ", fg="maroon", width=20, height=1).place(x=10, y=250)
+                Src_UnvLabel = Label(AddFrame, text="Source University : ", fg="green", width=20, height=1).place(x=10, y=270)
                 Src_UnvInput = StringVar()
-                Src_UnvEntry = Entry(AddFrame, textvariable=Src_UnvInput, fg="blue", width=30).place(x= 200, y=250)
+                Src_UnvEntry = Entry(AddFrame, textvariable=Src_UnvInput, fg="blue", width=30).place(x= 200, y=270)
                 
             handler = lambda: self.CloseThisFrame(AddFrame)
             def saveData():
@@ -99,8 +99,8 @@ class CollegeSystem(object):
                 AddExcel(which, new_row)
                 msgx.showinfo('Saving Message', 'Your Data have successfully been recorded')
                 handler()
-            SaveButton = Button(AddFrame, text="Save", fg='yellow', bg='light blue', command=saveData).place(x=100, y=330)
-            CancelButton = Button(AddFrame, text="Cancel", fg='yellow', bg='light blue', command=handler).place(x=300, y=330)
+            SaveButton = Button(AddFrame, text="Save", fg='black', bg='light blue', command=saveData, width=15).place(x=50, y=350)
+            CancelButton = Button(AddFrame, text="Cancel", fg='black', bg='light blue', command=handler, width=15).place(x=200, y=350)
         
     def CheckManager(self):
         self.root.withdraw()
