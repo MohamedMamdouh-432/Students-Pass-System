@@ -1,5 +1,5 @@
 # College-Pass-System
-Advanced System to Manage College Members' Data, and do some tests to let member To enter the college, by passing three tests
+Advanced System to Manage College Members' Data, and do some tests to let member enters the college, by passing three tests
 1) QR-Code Checker
 2) Face-Recognition
 3) Mask-Detection
